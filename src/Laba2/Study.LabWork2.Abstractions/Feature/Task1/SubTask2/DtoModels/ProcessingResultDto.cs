@@ -1,27 +1,26 @@
 namespace Study.LabWork2.Abstractions.Feature.Task1.SubTask2.DtoModels;
 
-/// <summary>
-/// Представляет результат обработки наборов чисел
-/// </summary>
-public sealed record ProcessingResultDto
+public sealed class ProcessingResultDto
 {
-    /// <summary>
-    /// Список результатов по каждому набору
-    /// </summary>
-    public List<ResultEntryDto> Results { get; init; }
+    public ProcessingResultDto(
+        IReadOnlyList<ResultEntryDto> results,
+        int totalSum,
+        int maxParallelThreads,
+        long elapsedMilliseconds)
+    {
+        Results = results;
+        TotalSum = totalSum;
+        MaxParallelThreads = maxParallelThreads;
+        ElapsedMilliseconds = elapsedMilliseconds;
+    }
 
-    /// <summary>
-    /// Общая сумма всех наборов
-    /// </summary>
-    public int TotalSum { get; init; }
+    public IReadOnlyList<ResultEntryDto> Results { get; }
 
-    /// <summary>
-    /// Время выполнения обработки
-    /// </summary>
-    public TimeSpan ExecutionTime { get; init; }
+    public int TotalSum { get; }
 
-    /// <summary>
-    /// Количество обработанных наборов
-    /// </summary>
-    public int ProcessedSetsCount { get; init; }
+    public int MaxParallelThreads { get; }
+
+    public long ElapsedMilliseconds { get; }
+
+    public int ProcessedSetsCount => Results.Count;
 }
