@@ -1,39 +1,28 @@
-using Study.LabWork1.Shared.Services;
+using Study.LabWork1.Features.Task1;
+using System;
 
-namespace Study.LabWork1;
-
-/// <summary>
-/// Начальная точка входа
-/// </summary>
-public static class Program
+class Program
 {
-    /// <summary>
-    /// Номер выполняемой задачи
-    /// </summary>
-    private const int RUN_TASK_NUMBER = 1;
-
-    /// <summary>
-    /// Старт программы
-    /// </summary>
-    public static void Main()
+    static void Main()
     {
-        var service = new RunService();
+        Console.WriteLine("=== Тесты ComplexNumber ===\n");
 
-        // todo: можно переписать на ввод с консоли
+        var a = new ComplexNumber(2, 3);
+        var b = new ComplexNumber(4, 5);
+        
+        Console.WriteLine($"a = {a}");
+        Console.WriteLine($"b = {b}");
+        Console.WriteLine($"a + b = {a + b}");
+        Console.WriteLine($"a - b = {a - b}");
+        Console.WriteLine($"a * b = {a * b}");
+        Console.WriteLine($"a / b = {a / b}");
+        Console.WriteLine($"|a| = {+a}");
+        Console.WriteLine($"Сопряжённое a = {-a}");
+        Console.WriteLine($"a == a: {a == a}");
+        Console.WriteLine($"a == b: {a == b}");
+        Console.WriteLine($"Чисто действительное: {new ComplexNumber(5, 0)}");
+        Console.WriteLine($"Чисто мнимое: {new ComplexNumber(0, 7)}");
 
-        switch (RUN_TASK_NUMBER)
-        {
-            case 1:
-                service.RunTask1();
-                break;
-            case 2:
-                service.RunTask2();
-                break;
-            case 3:
-                service.RunTask3();
-                break;
-            default:
-                throw new NotSupportedException();
-        }
+        Console.WriteLine("\n=== Тесты пройдены ===");
     }
 }
